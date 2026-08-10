@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conectados com Respeito | Bullying e Cyberbullying no Ensino Médio</title>
+    <style>
+        /* CSS RESET & VARIÁVEIS */
+        :root {
+            --primary: #2A4365;
+            --primary-light: #3182CE;
+            --accent-cyber: #00B4D8;
+            --warning: #E53E3E;
+            --success: #38A169;
+            --bg-light: #F7FAFC;
+            --card-bg: #FFFFFF;
+            --text-main: #2D3748;
+            --text-muted: #718096;
+            --radius: 12px;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* NAVEGAÇÃO */
+        header {
+            background: linear-gradient(135deg, var(--primary), #1A365D);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--accent-cyber);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-cyber);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(26, 54, 93, 0.85), rgba(42, 67, 101, 0.85)), 
+                        url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80') center/cover;
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--accent-cyber);
+            color: #002b36;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        /* CONTAINER PRINCIPAL */
+        main {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-cyber);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* CARDS GRID */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary-light);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .card.cause { border-color: var(--primary-light); }
+        .card.problem { border-color: var(--warning); }
+        .card.solution { border-color: var(--success); }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-icon {
+            font-size: 1.5rem;
+        }
+
+        .card ul {
+            list-style-position: inside;
+            color: var(--text-main);
+        }
+
+        .card ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        /* DESTAQUE EDUCAÇÃO DIGITAL */
+        .tech-callout {
+            background: linear-gradient(135deg, #1A365D, #2B6CB0);
+            color: white;
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .tech-callout-text {
+            flex: 2;
+        }
+
+        .tech-callout-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--accent-cyber);
+        }
+
+        .tech-badge-container {
+            flex: 1;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            backdrop-filter: blur(5px);
+        }
+
+        .tech-tag {
+            display: inline-block;
+            background: var(--accent-cyber);
+            color: #002b36;
+            font-family: monospace;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            margin: 0.3rem;
+        }
+
+        /* CANAL DE AJUDA */
+        .helpline {
+            background-color: #FFF5F5;
+            border: 1px solid #FEB2B2;
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .helpline h3 {
+            color: var(--warning);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-help {
+            display: inline-block;
+            background-color: var(--warning);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .btn-help:hover {
+            background-color: #C53030;
+        }
+
+        /* RODAPÉ */
+        footer {
+            background-color: var(--primary);
+            color: var(--text-muted);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .tech-callout {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVEGAÇÃO -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                🛡️ Conectados<span>Respeito</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#sobre">Início</a></li>
+                    <li><a href="#causas">Causas</a></li>
+                    <li><a href="#problemas">Problemas</a></li>
+                    <li><a href="#solucoes">Soluções</a></li>
+                    <li><a href="#educacao-digital">Tecnologia</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO / APRESENTAÇÃO -->
+    <section class="hero" id="sobre">
+        <div class="hero-content">
+            <span class="badge">1º ao 3º Ano do Ensino Médio</span>
+            <h1>Bullying e Cyberbullying no Ambiente Escolar</h1>
+            <p>Conscientização, empatia e segurança digital para construir uma comunidade escolar saudável na era da informação.</p>
+        </div>
+    </section>
+
+    <main>
+
+        <!-- SEÇÃO: CAUSAS -->
+        <section id="causas">
+            <div class="section-title">
+                <h2>Causas Principais</h2>
+                <p>O que leva à prática do bullying presencial e virtual entre os estudantes do Ensino Médio?</p>
+            </div>
+            <div class="grid">
+                <article class="card cause">
+                    <h3><span class="card-icon">🧠</span> Pressão Social e Aceitação</h3>
+                    <p>A busca constante por pertencimento a grupos sociais no Ensino Médio muitas vezes faz com que jovens reproduzam comportamentos agressivos para demonstrar poder ou popularidade.</p>
+                </article>
+
+                <article class="card cause">
+                    <h3><span class="card-icon">🌐</span> Desumanização Digital</h3>
+                    <p>No cyberbullying, a distância física e o suposto anonimato atrás das telas diminuem a percepção do dano causado à vítima, reduzindo a empatia imediata.</p>
+                </article>
+
+                <article class="card cause">
+                    <h3><span class="card-icon">🎭</span> Falta de Alfabetização Emocional</h3>
+                    <p>A dificuldade em gerenciar frustrações, aliada à ausência de debates sobre diversidade e respeito desde cedo, alimenta atitudes de intolerância e preconceito.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: PROBLEMAS -->
+        <section id="problemas">
+            <div class="section-title">
+                <h2>Problemas e Consequências</h2>
+                <p>Os impactos reais na rotina acadêmica e na saúde mental dos alunos.</p>
+            </div>
+            <div class="grid">
+                <article class="card problem">
+                    <h3><span class="card-icon">📉</span> Queda no Rendimento Escolar</h3>
+                    <p>Estudantes expostos ao bullying perdem a concentração, apresentam queda frequente nas notas e, em casos graves, chegam à evasão escolar.</p>
+                </article>
+
+                <article class="card problem">
+                    <h3><span class="card-icon">💔</span> Danos à Saúde Mental</h3>
+                    <p>Ansiedade generalizada, ataques de pânico, depressão e baixa auto-estima tornam-se constantes na vida de quem sofre agressões físicas ou virtuais.</p>
+                </article>
+
+                <article class="card problem">
+                    <h3><span class="card-icon">🔍</span> Rastro Digital Permanente</h3>
+                    <p>Diferente do bullying tradicional, o cyberbullying ultrapassa os muros da escola: ataques na internet ganham escala global rapidamente e são difíceis de apagar.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: SOLUÇÕES -->
+        <section id="solucoes">
+            <div class="section-title">
+                <h2>Soluções Práticas</h2>
+                <p>Ações efetivas que a comunidade escolar deve adotar para combater o problema.</p>
+            </div>
+            <div class="grid">
+                <article class="card solution">
+                    <h3><span class="card-icon">📢</span> Canais Seguros de Denúncia</h3>
+                    <p>Implementação de plataformas onde os alunos possam relatar abusos de forma anônima e confiável, garantindo apoio imediato da orientação pedagógica.</p>
+                </article>
+
+                <article class="card solution">
+                    <h3><span class="card-icon">🤝</span> Equipes de Mediação Escolar</h3>
+                    <p>Criar grupos de mediação compostos por alunos do 1º ao 3º ano capacitados para resolver conflitos pacificamente através da comunicação não-violenta.</p>
+                </article>
+
+                <article class="card solution">
+                    <h3><span class="card-icon">📱</span> Conscientização em Rede</h3>
+                    <p>Promover debates constantes nas salas de aula sobre privacidade, postura ética nas mídias sociais e o impacto das interações digitais no dia a dia.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: EDUCAÇÃO DIGITAL & HTML -->
+        <section id="educacao-digital">
+            <div class="tech-callout">
+                <div class="tech-callout-text">
+                    <h3>Tecnologia a Favor da Conscientização</h3>
+                    <p>A <strong>educação digital</strong> é a ferramenta mais poderosa para transformar a cultura das redes sociais. Dominar linguagens da web como <strong>HTML</strong> permite que os próprios estudantes criem portais de apoio, campanhas de conscientização e plataformas colaborativas para transformar a realidade escolar.</p>
+                </div>
+                <div class="tech-badge-container">
+                    <p style="margin-bottom: 0.5rem; font-size: 0.9rem;">Desenvolvimento Web Responsável</p>
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">educação digital</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CANAL DE APOIO -->
+        <section class="helpline">
+            <h3>Está passando por isso ou viu algo acontecendo?</h3>
+            <p>Não guarde para você. Procure a orientação pedagógica da sua escola ou utilize os canais oficiais de apoio.</p>
+            <a href="https://new.safernet.org.br/" target="_blank" class="btn-help">Saiba como denunciar na SaferNet</a>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>&copy; 2026 Projeto de Conscientização Escolar — Desenvolvido com código HTML semântico e focado em Educação Digital para o Ensino Médio.</p>
+    </footer>
+
+</body>
+</html>
+
